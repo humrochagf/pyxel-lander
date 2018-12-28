@@ -64,7 +64,6 @@ class Moon:
             if terrain_overflow > overflow:
                 overflow = terrain_overflow
 
-        print(overflow)
         if overflow:
             for tile in self.surface:
                 tile.y -= overflow
