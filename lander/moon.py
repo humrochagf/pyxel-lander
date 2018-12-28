@@ -79,4 +79,3 @@ class Moon:
 
             if tile.y < self.h - 16:
                 pyxel.rect(tile.x, tile.y + 16, tile.x + 16, self.h, 6)
-
