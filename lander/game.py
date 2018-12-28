@@ -6,18 +6,20 @@ from .lunar_module import LunarModule
 from .moon import Moon
 
 GRAVITY = 0.2
+WIDTH = 192
+HEIGHT = 144
 
 
 class Game:
 
     def __init__(self):
-        pyxel.init(180, 135)
+        pyxel.init(WIDTH, HEIGHT)
 
         pyxel.load(
             os.path.join(os.path.dirname(__file__), 'assets', 'assets.pyxel')
         )
 
-        self.moon = Moon(180, 135)
+        self.moon = Moon(WIDTH, HEIGHT)
         self.lunar_module = LunarModule(50, 50, GRAVITY)
 
         pyxel.run(self.update, self.draw)
@@ -25,6 +27,8 @@ class Game:
     def update(self):
         if pyxel.btnp(pyxel.KEY_ESCAPE) or pyxel.btnp(pyxel.KEY_Q):
             pyxel.quit()
+        elif pyxel.btnp(pyxel.KEY_M):
+            self.moon = Moon(WIDTH, HEIGHT)
 
         self.lunar_module.update()
 

@@ -4,7 +4,7 @@ import pyxel
 
 from .utils import Sprite
 
-TRUSTER_FORCE = 0.5
+TRUSTER_FORCE = 0.6
 FUEL = 100
 
 
@@ -12,22 +12,22 @@ class LunarModule:
 
     sprites = {
         'idle': [
-            Sprite(0, 8, 0, 8, 8),
+            Sprite(0, 8, 0, 8, 8, 0),
         ],
         'dead': [
-            Sprite(0, 32, 0, 8, 8),
+            Sprite(0, 32, 0, 8, 8, 0),
         ],
         'bottom-thruster': [
-            Sprite(0, 0, 8, 8, 8),
-            Sprite(0, 8, 8, 8, 8),
+            Sprite(0, 0, 8, 8, 8, 0),
+            Sprite(0, 8, 8, 8, 8, 0),
         ],
         'left-thruster': [
-            Sprite(0, 16, 0, 8, 8),
-            Sprite(0, 24, 0, 8, 8),
+            Sprite(0, 16, 0, 8, 8, 0),
+            Sprite(0, 24, 0, 8, 8, 0),
         ],
         'right-thruster': [
-            Sprite(0, 16, 8, 8, 8),
-            Sprite(0, 24, 8, 8, 8),
+            Sprite(0, 16, 8, 8, 8, 0),
+            Sprite(0, 24, 8, 8, 8, 0),
         ],
     }
 
@@ -87,4 +87,5 @@ class LunarModule:
 
         pyxel.blt(
             self.x, self.y, frame.img, frame.u, frame.v, frame.w, frame.h,
+            frame.colkey,
         )

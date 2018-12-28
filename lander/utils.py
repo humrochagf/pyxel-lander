@@ -1,6 +1,6 @@
 from collections import namedtuple
 
-Sprite = namedtuple('Sprite', ['img', 'u', 'v', 'w', 'h'])
+Sprite = namedtuple('Sprite', ['img', 'u', 'v', 'w', 'h', 'colkey'])
 
 
 class Tile:
