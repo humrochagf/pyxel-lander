@@ -56,7 +56,12 @@ class LunarModule:
         return time_step
 
     def check_collision(self, moon):
-        for chunk in moon.surface:
+        check_surface = filter(
+            lambda s: s.x > self.x - 16 and s.x < self.x + 8,
+            moon.surface
+        )
+
+        for chunk in check_surface:
             collided = (
                 abs(chunk.x - self.x) < 8
                 and abs(chunk.y - self.y) < 8
