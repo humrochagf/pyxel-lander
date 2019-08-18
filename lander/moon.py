@@ -37,10 +37,10 @@ class Moon:
         last_terrain = None
         y = self.h - 16
         overflow = 0
-        x_start_list = range(0, self.w + 16, 16)
-        landing_spot = choice(x_start_list[1:-2])
+        surface_x_blocks = range(0, self.w, 16)
+        landing_spot = choice(surface_x_blocks[1:-1])
 
-        for x in range(0, self.w + 16, 16):
+        for x in surface_x_blocks:
             if x == landing_spot:
                 terrain = 'landing'
             else:
@@ -78,4 +78,4 @@ class Moon:
             )
 
             if tile.y < self.h - 16:
-                pyxel.rect(tile.x, tile.y + 16, tile.x + 16, self.h, 6)
+                pyxel.rect(tile.x, tile.y + 16, 16, self.h, 6)

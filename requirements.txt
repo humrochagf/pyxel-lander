@@ -1,1 +1,1 @@
-pyxel
+pyxel==1.2.5
