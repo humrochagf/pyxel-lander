@@ -29,6 +29,9 @@ class Game:
             pyxel.quit()
         elif pyxel.btnp(pyxel.KEY_M):
             self.moon = Moon(WIDTH, HEIGHT)
+        elif pyxel.btnp(pyxel.KEY_R):
+            del self.lunar_module
+            self.lunar_module = LunarModule(96, 50, GRAVITY)
 
         self.lunar_module.update(self.moon)
 
