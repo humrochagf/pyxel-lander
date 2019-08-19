@@ -10,13 +10,13 @@ This game runs with Python 3.6 or above.
 
 To install this game first clone this repository:
 
-```console
+```shell
 $ git clone https://github.com/humrochagf/pyxel-lander.git
 ```
 
 After cloned, go to its folder and install its requirements:
 
-```console
+```shell
 $ cd pyxel-lander/
 $ pip install -r requirements.txt
 ```
@@ -25,6 +25,6 @@ $ pip install -r requirements.txt
 
 With everything installed run the game with:
 
-```console
-python pyxel_lander.py
+```shell
+$ python pyxel_lander.py
 ```
