@@ -4,6 +4,8 @@ import pyxel
 
 from .utils import Sprite
 
+CRASH_SPEED = 0.3
+LAND_SPEED = 0.1
 TRUSTER_FORCE = 0.6
 FUEL = 100
 
@@ -14,8 +16,17 @@ class LunarModule:
         'idle': [
             Sprite(0, 8, 0, 8, 8, 0),
         ],
-        'dead': [
+        'lost':  [],
+        'landed': [
+            Sprite(0, 8, 0, 8, 8, 0),
+        ],
+        'crashed': [
             Sprite(0, 32, 0, 8, 8, 0),
+            Sprite(0, 32, 8, 8, 8, 0),
+        ],
+        'damaged': [
+            Sprite(0, 40, 0, 8, 8, 0),
+            Sprite(0, 40, 8, 8, 8, 0),
         ],
         'bottom-thruster': [
             Sprite(0, 0, 8, 8, 8, 0),
@@ -30,6 +41,8 @@ class LunarModule:
             Sprite(0, 24, 8, 8, 8, 0),
         ],
     }
+
+    flag = Sprite(0, 48, 0, 8, 8, 0)
 
     def __init__(self, x, y, gravity):
         self.x = x
@@ -64,27 +77,40 @@ class LunarModule:
                 right_x = int(self.x + 8 - surface.x)
 
                 if left_x >= 0 and left_x < 16:
-                    collided = pyxel.image(surface.sprite.img).get(
+                    collision_value = pyxel.image(surface.sprite.img).get(
                         surface.sprite.u + left_x,
                         surface.sprite.v + y,
                     )
 
-                    if collided:
-                        return True
+                    return collision_value
 
                 if right_x >= 0 and right_x < 16:
-                    collided = pyxel.image(surface.sprite.img).get(
+                    collision_value = pyxel.image(surface.sprite.img).get(
                         surface.sprite.u + right_x,
                         surface.sprite.v + y,
                     )
 
-                    if collided:
-                        return True
+                    return collision_value
 
-        return False
+        return 0
 
     def update(self, moon):
-        if not self.check_collision(moon):
+        collision_value = self.check_collision(moon)
+
+        if collision_value:
+            if collision_value == 11:
+                vx = self.velocity_x
+                vy = self.velocity_y
+
+                if vx < LAND_SPEED and vy < LAND_SPEED:
+                    self.action = 'landed'
+                elif vx < CRASH_SPEED and vy < CRASH_SPEED:
+                    self.action = 'damaged'
+                else:
+                    self.action = 'crashed'
+            else:
+                self.action = 'crashed'
+        else:
             thruster_x = 0
             thruster_y = 0
 
@@ -118,3 +144,9 @@ class LunarModule:
             self.x, self.y, frame.img, frame.u, frame.v, frame.w, frame.h,
             frame.colkey,
         )
+
+        if self.action == 'landed':
+            pyxel.blt(
+                self.x + 8, self.y, self.flag.img, self.flag.u, self.flag.v,
+                self.flag.w, self.flag.h, self.flag.colkey,
+            )

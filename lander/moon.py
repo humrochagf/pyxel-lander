@@ -54,7 +54,7 @@ class Moon:
                 y += 16
 
             self.surface.append(
-                Tile(x, y, choice(self.sprites[terrain]))
+                Tile(x, y, choice(self.sprites[terrain])),
             )
 
             last_terrain = terrain

@@ -2,7 +2,7 @@ import os
 
 import pyxel
 
-from .lunar_module import LunarModule
+from .lunar_module import CRASH_SPEED, FUEL, LAND_SPEED, LunarModule
 from .moon import Moon
 
 GRAVITY = 0.2
@@ -16,7 +16,7 @@ class Game:
         pyxel.init(WIDTH, HEIGHT)
 
         pyxel.load(
-            os.path.join(os.path.dirname(__file__), 'assets', 'assets.pyxres')
+            os.path.join(os.path.dirname(__file__), 'assets', 'assets.pyxres'),
         )
 
         self.lunar_module = None
@@ -38,6 +38,34 @@ class Game:
         if self.lunar_module:
             self.lunar_module.update(self.moon)
 
+    def draw_hud(self, fuel, velocity_x, velocity_y):
+        rate = fuel / FUEL
+
+        if rate < 0.2:
+            fuel_color = 8
+        elif rate < 0.5:
+            fuel_color = 10
+        else:
+            fuel_color = 7
+
+        if velocity_x >= CRASH_SPEED:
+            x_color = 8
+        elif velocity_x >= LAND_SPEED:
+            x_color = 10
+        else:
+            x_color = 7
+
+        if velocity_y >= CRASH_SPEED:
+            y_color = 8
+        elif velocity_y >= LAND_SPEED:
+            y_color = 10
+        else:
+            y_color = 7
+
+        pyxel.text(70, 5, f'fuel: {fuel:.2f}', fuel_color)
+        pyxel.text(140, 5, f'x: {velocity_x:.4f}', x_color)
+        pyxel.text(140, 15, f'y: {velocity_y:.4f}', y_color)
+
     def draw(self):
         pyxel.cls(0)
         pyxel.text(5, 5, 'Pyxel Lander', 7)
@@ -45,9 +73,11 @@ class Game:
         self.moon.draw()
 
         if self.lunar_module:
-            pyxel.text(70, 5, f'fuel: {self.lunar_module.fuel:.2f}', 7)
-            pyxel.text(140, 5, f'x: {self.lunar_module.velocity_x:.4f}', 7)
-            pyxel.text(140, 15, f'y: {self.lunar_module.velocity_y:.4f}', 7)
+            self.draw_hud(
+                self.lunar_module.fuel,
+                self.lunar_module.velocity_x,
+                self.lunar_module.velocity_y,
+            )
 
             self.lunar_module.draw()
         else:
