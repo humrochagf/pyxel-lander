@@ -2,7 +2,9 @@ import os
 
 import pyxel
 
-from .lunar_module import CRASH_SPEED, FUEL, LAND_SPEED, LunarModule
+from .lunar_module import (
+    CRASH_LIMIT_SPEED, FUEL, LAND_LIMIT_SPEED, LunarModule,
+)
 from .moon import Moon
 
 GRAVITY = 0.2
@@ -48,16 +50,16 @@ class Game:
         else:
             fuel_color = 7
 
-        if velocity_x >= CRASH_SPEED:
+        if velocity_x > CRASH_LIMIT_SPEED:
             x_color = 8
-        elif velocity_x >= LAND_SPEED:
+        elif velocity_x > LAND_LIMIT_SPEED:
             x_color = 10
         else:
             x_color = 7
 
-        if velocity_y >= CRASH_SPEED:
+        if velocity_y > CRASH_LIMIT_SPEED:
             y_color = 8
-        elif velocity_y >= LAND_SPEED:
+        elif velocity_y > LAND_LIMIT_SPEED:
             y_color = 10
         else:
             y_color = 7

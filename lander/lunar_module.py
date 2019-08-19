@@ -4,8 +4,8 @@ import pyxel
 
 from .utils import Sprite
 
-CRASH_SPEED = 0.3
-LAND_SPEED = 0.1
+CRASH_LIMIT_SPEED = 0.3
+LAND_LIMIT_SPEED = 0.1
 TRUSTER_FORCE = 0.6
 FUEL = 100
 
@@ -82,7 +82,8 @@ class LunarModule:
                         surface.sprite.v + y,
                     )
 
-                    return collision_value
+                    if collision_value:
+                        return collision_value
 
                 if right_x >= 0 and right_x < 16:
                     collision_value = pyxel.image(surface.sprite.img).get(
@@ -90,7 +91,8 @@ class LunarModule:
                         surface.sprite.v + y,
                     )
 
-                    return collision_value
+                    if collision_value:
+                        return collision_value
 
         return 0
 
@@ -102,9 +104,9 @@ class LunarModule:
                 vx = self.velocity_x
                 vy = self.velocity_y
 
-                if vx < LAND_SPEED and vy < LAND_SPEED:
+                if vx <= LAND_LIMIT_SPEED and vy <= LAND_LIMIT_SPEED:
                     self.action = 'landed'
-                elif vx < CRASH_SPEED and vy < CRASH_SPEED:
+                elif vx <= CRASH_LIMIT_SPEED and vy <= CRASH_LIMIT_SPEED:
                     self.action = 'damaged'
                 else:
                     self.action = 'crashed'
@@ -116,18 +118,29 @@ class LunarModule:
 
             if pyxel.btn(pyxel.KEY_DOWN) and self.fuel > 0:
                 self.action = 'bottom-thruster'
-                thruster_y = TRUSTER_FORCE
-                self.fuel -= TRUSTER_FORCE
+
+                if self.fuel > TRUSTER_FORCE:
+                    thruster_y = TRUSTER_FORCE
+                else:
+                    thruster_y = self.fuel
             elif pyxel.btn(pyxel.KEY_LEFT) and self.fuel > 0:
                 self.action = 'left-thruster'
-                thruster_x = TRUSTER_FORCE
-                self.fuel -= TRUSTER_FORCE
+
+                if self.fuel > TRUSTER_FORCE:
+                    thruster_x = TRUSTER_FORCE
+                else:
+                    thruster_x = self.fuel
             elif pyxel.btn(pyxel.KEY_RIGHT) and self.fuel > 0:
                 self.action = 'right-thruster'
-                thruster_x = -TRUSTER_FORCE
-                self.fuel -= TRUSTER_FORCE
+
+                if self.fuel > TRUSTER_FORCE:
+                    thruster_x = -TRUSTER_FORCE
+                else:
+                    thruster_x = -self.fuel
             else:
                 self.action = 'idle'
+
+            self.fuel -= abs(thruster_x) + abs(thruster_y)
 
             time_step = self.get_time_step()
 
