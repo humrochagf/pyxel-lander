@@ -1,6 +1,7 @@
 from random import choice
 
 import pyxel
+from pyxel import COLOR_BLACK, COLOR_LIGHTGRAY
 
 from .utils import Sprite, Tile
 
@@ -9,20 +10,20 @@ class Moon:
 
     sprites = {
         'landing': [
-            Sprite(0, 0, 16, 16, 16, 0),
+            Sprite(0, 0, 16, 16, 16, COLOR_BLACK),
         ],
         'flat': [
-            Sprite(0, 16, 16, 16, 16, 0),
-            Sprite(0, 32, 16, 16, 16, 0),
-            Sprite(0, 48, 16, 16, 16, 0),
+            Sprite(0, 16, 16, 16, 16, COLOR_BLACK),
+            Sprite(0, 32, 16, 16, 16, COLOR_BLACK),
+            Sprite(0, 48, 16, 16, 16, COLOR_BLACK),
         ],
         'up': [
-            Sprite(0, 0, 32, 16, 16, 0),
-            Sprite(0, 16, 32, 16, 16, 0),
+            Sprite(0, 0, 32, 16, 16, COLOR_BLACK),
+            Sprite(0, 16, 32, 16, 16, COLOR_BLACK),
         ],
         'down': [
-            Sprite(0, 32, 32, 16, 16, 0),
-            Sprite(0, 48, 32, 16, 16, 0),
+            Sprite(0, 32, 32, 16, 16, COLOR_BLACK),
+            Sprite(0, 48, 32, 16, 16, COLOR_BLACK),
         ],
     }
 
@@ -78,4 +79,4 @@ class Moon:
             )
 
             if tile.y < self.h - 16:
-                pyxel.rect(tile.x, tile.y + 16, 16, self.h, 6)
+                pyxel.rect(tile.x, tile.y + 16, 16, self.h, COLOR_LIGHTGRAY)

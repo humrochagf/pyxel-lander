@@ -1,3 +1,5 @@
+from pyxel import COLOR_LIME
+
 # Game screen
 
 WIDTH = 192
@@ -11,3 +13,5 @@ FUEL = 100
 
 PERFECT_LANDING_LIMIT = 0.1
 MAX_IMPACT_LIMIT = 0.3
+
+PLATFORM_COLOR = COLOR_LIME

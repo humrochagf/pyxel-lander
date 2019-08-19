@@ -1,9 +1,11 @@
 import time
 
 import pyxel
+from pyxel import COLOR_BLACK
 
 from .constans import (
-    FUEL, MAX_IMPACT_LIMIT, PERFECT_LANDING_LIMIT, THRUSTERS_FORCE,
+    FUEL, MAX_IMPACT_LIMIT, PERFECT_LANDING_LIMIT, PLATFORM_COLOR,
+    THRUSTERS_FORCE,
 )
 from .utils import Sprite
 
@@ -12,37 +14,37 @@ class LunarModule:
 
     sprites = {
         'idle': [
-            Sprite(0, 8, 0, 8, 8, 0),
+            Sprite(0, 8, 0, 8, 8, COLOR_BLACK),
         ],
         'lost':  [
-            Sprite(0, 8, 0, 8, 8, 0),
+            Sprite(0, 8, 0, 8, 8, COLOR_BLACK),
         ],
         'landed': [
-            Sprite(0, 8, 0, 8, 8, 0),
+            Sprite(0, 8, 0, 8, 8, COLOR_BLACK),
         ],
         'crashed': [
-            Sprite(0, 32, 0, 8, 8, 0),
-            Sprite(0, 32, 8, 8, 8, 0),
+            Sprite(0, 32, 0, 8, 8, COLOR_BLACK),
+            Sprite(0, 32, 8, 8, 8, COLOR_BLACK),
         ],
         'damaged': [
-            Sprite(0, 40, 0, 8, 8, 0),
-            Sprite(0, 40, 8, 8, 8, 0),
+            Sprite(0, 40, 0, 8, 8, COLOR_BLACK),
+            Sprite(0, 40, 8, 8, 8, COLOR_BLACK),
         ],
         'bottom-thruster': [
-            Sprite(0, 0, 8, 8, 8, 0),
-            Sprite(0, 8, 8, 8, 8, 0),
+            Sprite(0, 0, 8, 8, 8, COLOR_BLACK),
+            Sprite(0, 8, 8, 8, 8, COLOR_BLACK),
         ],
         'left-thruster': [
-            Sprite(0, 16, 0, 8, 8, 0),
-            Sprite(0, 24, 0, 8, 8, 0),
+            Sprite(0, 16, 0, 8, 8, COLOR_BLACK),
+            Sprite(0, 24, 0, 8, 8, COLOR_BLACK),
         ],
         'right-thruster': [
-            Sprite(0, 16, 8, 8, 8, 0),
-            Sprite(0, 24, 8, 8, 8, 0),
+            Sprite(0, 16, 8, 8, 8, COLOR_BLACK),
+            Sprite(0, 24, 8, 8, 8, COLOR_BLACK),
         ],
     }
 
-    flag = Sprite(0, 48, 0, 8, 8, 0)
+    flag = Sprite(0, 48, 0, 8, 8, COLOR_BLACK)
 
     def __init__(self, x, y, gravity):
         self.x = x
@@ -107,7 +109,7 @@ class LunarModule:
         collision_value = self.check_collision(moon)
 
         if collision_value:
-            if collision_value == 11:
+            if collision_value == PLATFORM_COLOR:
                 vx = self.velocity_x
                 vy = self.velocity_y
 
