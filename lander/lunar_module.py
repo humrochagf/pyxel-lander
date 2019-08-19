@@ -2,12 +2,10 @@ import time
 
 import pyxel
 
+from .constans import (
+    FUEL, MAX_IMPACT_LIMIT, PERFECT_LANDING_LIMIT, THRUSTERS_FORCE,
+)
 from .utils import Sprite
-
-CRASH_LIMIT_SPEED = 0.3
-LAND_LIMIT_SPEED = 0.1
-TRUSTER_FORCE = 0.6
-FUEL = 100
 
 
 class LunarModule:
@@ -16,7 +14,9 @@ class LunarModule:
         'idle': [
             Sprite(0, 8, 0, 8, 8, 0),
         ],
-        'lost':  [],
+        'lost':  [
+            Sprite(0, 8, 0, 8, 8, 0),
+        ],
         'landed': [
             Sprite(0, 8, 0, 8, 8, 0),
         ],
@@ -69,6 +69,11 @@ class LunarModule:
         return time_step
 
     def check_collision(self, moon):
+        # lost contact with lunar module
+        if self.x > moon.w or self.x < -8:
+            return -1
+
+        # check for collision with the moon surface
         for surface in moon.surface:
             y = int(self.y + 8 - surface.y)
 
@@ -76,6 +81,7 @@ class LunarModule:
                 left_x = int(self.x - surface.x)
                 right_x = int(self.x + 8 - surface.x)
 
+                # check for overlapping with the module left leg
                 if left_x >= 0 and left_x < 16:
                     collision_value = pyxel.image(surface.sprite.img).get(
                         surface.sprite.u + left_x,
@@ -85,6 +91,7 @@ class LunarModule:
                     if collision_value:
                         return collision_value
 
+                # check for overlapping with the module right leg
                 if right_x >= 0 and right_x < 16:
                     collision_value = pyxel.image(surface.sprite.img).get(
                         surface.sprite.u + right_x,
@@ -104,12 +111,14 @@ class LunarModule:
                 vx = self.velocity_x
                 vy = self.velocity_y
 
-                if vx <= LAND_LIMIT_SPEED and vy <= LAND_LIMIT_SPEED:
-                    self.action = 'landed'
-                elif vx <= CRASH_LIMIT_SPEED and vy <= CRASH_LIMIT_SPEED:
+                if vx > MAX_IMPACT_LIMIT or vy > MAX_IMPACT_LIMIT:
+                    self.action = 'crashed'
+                elif vx > PERFECT_LANDING_LIMIT or vy > PERFECT_LANDING_LIMIT:
                     self.action = 'damaged'
                 else:
-                    self.action = 'crashed'
+                    self.action = 'landed'
+            elif collision_value == -1:
+                self.action = 'lost'
             else:
                 self.action = 'crashed'
         else:
@@ -119,22 +128,22 @@ class LunarModule:
             if pyxel.btn(pyxel.KEY_DOWN) and self.fuel > 0:
                 self.action = 'bottom-thruster'
 
-                if self.fuel > TRUSTER_FORCE:
-                    thruster_y = TRUSTER_FORCE
+                if self.fuel > THRUSTERS_FORCE:
+                    thruster_y = THRUSTERS_FORCE
                 else:
                     thruster_y = self.fuel
             elif pyxel.btn(pyxel.KEY_LEFT) and self.fuel > 0:
                 self.action = 'left-thruster'
 
-                if self.fuel > TRUSTER_FORCE:
-                    thruster_x = TRUSTER_FORCE
+                if self.fuel > THRUSTERS_FORCE:
+                    thruster_x = THRUSTERS_FORCE
                 else:
                     thruster_x = self.fuel
             elif pyxel.btn(pyxel.KEY_RIGHT) and self.fuel > 0:
                 self.action = 'right-thruster'
 
-                if self.fuel > TRUSTER_FORCE:
-                    thruster_x = -TRUSTER_FORCE
+                if self.fuel > THRUSTERS_FORCE:
+                    thruster_x = -THRUSTERS_FORCE
                 else:
                     thruster_x = -self.fuel
             else:
