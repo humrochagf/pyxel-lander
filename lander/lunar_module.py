@@ -56,19 +56,30 @@ class LunarModule:
         return time_step
 
     def check_collision(self, moon):
-        check_surface = filter(
-            lambda s: s.x > self.x - 16 and s.x < self.x + 8,
-            moon.surface
-        )
+        for surface in moon.surface:
+            y = int(self.y + 8 - surface.y)
 
-        for chunk in check_surface:
-            collided = (
-                abs(chunk.x - self.x) < 8
-                and abs(chunk.y - self.y) < 8
-            )
+            if y >= 0 and y < 16:
+                left_x = int(self.x - surface.x)
+                right_x = int(self.x + 8 - surface.x)
 
-            if collided:
-                return True
+                if left_x >= 0 and left_x < 16:
+                    collided = pyxel.image(surface.sprite.img).get(
+                        surface.sprite.u + left_x,
+                        surface.sprite.v + y,
+                    )
+
+                    if collided:
+                        return True
+
+                if right_x >= 0 and right_x < 16:
+                    collided = pyxel.image(surface.sprite.img).get(
+                        surface.sprite.u + right_x,
+                        surface.sprite.v + y,
+                    )
+
+                    if collided:
+                        return True
 
         return False
 
