@@ -1,5 +1,7 @@
 from pyxel import COLOR_LIME
 
+VERSION = '1.0.0'
+
 # Game screen
 
 WIDTH = 192

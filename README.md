@@ -1,6 +1,6 @@
 # Pyxel Lander
 
-Old DOS Lunar Lander like tribute written with [pyxel](https://github.com/kitao/pyxel) 
+Lunar Lander game tribute written in Python with [Pyxel](https://github.com/kitao/pyxel) retro game engine.
 
 ![screenshot](screenshot.png)
 
@@ -21,7 +21,7 @@ $ cd pyxel-lander/
 $ pip install -r requirements.txt
 ```
 
-**Warning:** The pyxel requirement uses external libraries, make sure you have them all installed by looking into its [docs](https://github.com/kitao/pyxel#how-to-install).
+**Warning:** The Pyxel requirement uses external libraries, make sure you have them all installed by looking into its [docs](https://github.com/kitao/pyxel#how-to-install).
 
 With everything installed run the game with:
 
