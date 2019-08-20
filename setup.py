@@ -34,6 +34,7 @@ setup(
     package_data={PACKAGE: ['assets/assets.pyxres']},
     zip_safe=False,
     install_requires=REQUIREMENTS,
+    python_requires='>=3.7',
     entry_points={
         'gui_scripts': ['pyxel-lander=lander:Game'],
     },
@@ -44,7 +45,6 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3 :: Only',
         'Topic :: Desktop Environment',

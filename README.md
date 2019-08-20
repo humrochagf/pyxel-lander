@@ -22,7 +22,7 @@ Lunar Lander game tribute written in Python with [Pyxel](https://github.com/kita
 
 ## Installation
 
-This game runs with Python 3.6 or above.
+This game runs with Python 3.7 or above.
 
 You can use [pipx](https://pipxproject.github.io/pipx/) to install the game and have it available as an standalone program:
 
