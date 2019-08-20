@@ -1,21 +1,14 @@
 #!/usr/bin/env python3
 
-import os
-
 from setuptools import find_packages, setup
 
-PACKAGE = 'lander'
-REQUIREMENTS = [
-    'pyxel==1.2.5',
-]
+CONSTANTS = {}
+
+with open('lander/constans.py') as constans_file:
+    exec(constans_file.read(), CONSTANTS)
 
 with open('README.md') as f:
     README = f.read()
-
-
-CONSTANTS = {}
-with open(os.path.join(PACKAGE, 'constans.py')) as constans_file:
-    exec(constans_file.read(), CONSTANTS)
 
 setup(
     name='pyxel-lander',
@@ -31,12 +24,16 @@ setup(
     url='https://github.com/humrochagf/pyxel-lander',
     license='MIT',
     packages=find_packages(),
-    package_data={PACKAGE: ['assets/assets.pyxres']},
+    package_data={
+        'lander': ['assets/assets.pyxres'],
+    },
     zip_safe=False,
-    install_requires=REQUIREMENTS,
+    install_requires=[
+        'pyxel==1.2.5',
+    ],
     python_requires='>=3.7',
     entry_points={
-        'gui_scripts': ['pyxel-lander=lander:Game'],
+        'gui_scripts': ['pyxel-lander=lander.__main__:main'],
     },
     platforms='any',
     keywords='pyxel games',
@@ -51,4 +48,20 @@ setup(
         'Topic :: Games/Entertainment :: Arcade',
         'Topic :: Games/Entertainment :: Simulation',
     ],
+    options={
+        'app': {
+            'formal_name': 'pyxel-lander',
+        },
+        'linux': {
+            'dir': 'dist/linux',
+        },
+        'macos': {
+            'dir': 'dist/macos',
+            'icon': 'images/icon',
+        },
+        'windows': {
+            'dir': 'dist/windows',
+            'icon': 'images/icon',
+        },
+    }
 )
