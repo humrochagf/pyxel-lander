@@ -2,7 +2,7 @@
 
 Lunar Lander game tribute written in Python with [Pyxel](https://github.com/kitao/pyxel) retro game engine.
 
-![screenshot](screenshot.png)
+![screenshot](https://raw.githubusercontent.com/humrochagf/pyxel-lander/master/screenshot.png)
 
 ## Features
 
