@@ -1,2 +1,14 @@
+.idea/
+.cache/
+
+dist/
+build/
+
+.coverage
+
+*.egg
+*.egg-info
 *.pyc
 *.pyo
+*.tar.gz
+*.zip
