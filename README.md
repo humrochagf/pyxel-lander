@@ -24,7 +24,7 @@ Lunar Lander game tribute written in Python with [Pyxel](https://github.com/kita
 
 This game runs with Python 3.6 or above.
 
-You can use [pipx]() to install the game and have it available as an standalone program:
+You can use [pipx](https://pipxproject.github.io/pipx/) to install the game and have it available as an standalone program:
 
 ```shell
 $ pipx install pyxel-lander
