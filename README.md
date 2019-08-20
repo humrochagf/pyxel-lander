@@ -4,24 +4,56 @@ Lunar Lander game tribute written in Python with [Pyxel](https://github.com/kita
 
 ![screenshot](screenshot.png)
 
+## Features
+
+- Procedural map generation
+- Pixel perfect collision detection
+- Fuel propulsion system
+- HUD with the Lunar Module feedback
+- Landing impact detection
+
+## Controls
+
+- Use the `arrow` keys to control the Lunar Module.
+- The `s` key starts the game.
+- You can change maps with the `m` key on the menu.
+- The `r` key restarts the game.
+
+
 ## Installation
 
 This game runs with Python 3.6 or above.
 
-To install this game first clone this repository:
+You can use [pipx]() to install the game and have it available as an standalone program:
+
+```shell
+$ pipx install pyxel-lander
+```
+
+Then you can run the game running:
+
+```shell
+$ pyxel-lander
+```
+
+**Warning:** The Pyxel requirement uses external libraries, make sure you have them all installed by looking into its [docs](https://github.com/kitao/pyxel#how-to-install).
+
+## Running from source code
+
+To run it from the source code you need first to clone from the repository:
 
 ```shell
 $ git clone https://github.com/humrochagf/pyxel-lander.git
 ```
 
-After cloned, go to its folder and install its requirements:
+After cloned, go to the folder, set up the `venv` and install its requirements:
 
 ```shell
 $ cd pyxel-lander/
+$ python3 -m venv venv
+$ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
-
-**Warning:** The Pyxel requirement uses external libraries, make sure you have them all installed by looking into its [docs](https://github.com/kitao/pyxel#how-to-install).
 
 With everything installed run the game with:
 
