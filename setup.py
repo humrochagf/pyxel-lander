@@ -34,7 +34,9 @@ setup(
     package_data={PACKAGE: ['assets/assets.pyxres']},
     zip_safe=False,
     install_requires=REQUIREMENTS,
-    entry_points=dict(console_scripts=['lander=lander.Game']),
+    entry_points={
+        'gui_scripts': ['pyxel-lander=lander:Game'],
+    },
     platforms='any',
     keywords='pyxel games',
     classifiers=[
