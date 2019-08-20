@@ -4,8 +4,8 @@ import pyxel
 from pyxel import COLOR_BLACK, COLOR_RED, COLOR_WHITE, COLOR_YELLOW
 
 from .constans import (
-    FUEL, GRAVITY, HEIGHT, MAX_IMPACT_LIMIT, PERFECT_LANDING_LIMIT, VERSION,
-    WIDTH,
+    AUTHOR_HANDLE, FUEL, GRAVITY, HEIGHT, MAX_IMPACT_LIMIT,
+    PERFECT_LANDING_LIMIT, VERSION, WIDTH,
 )
 from .lunar_module import LunarModule
 from .moon import Moon
@@ -101,5 +101,5 @@ class Game:
             )
             pyxel.text(44, 76, 'Made with', COLOR_WHITE)
             pyxel.text(82, 76, '<3', COLOR_RED)
-            pyxel.text(92, 76, 'by @humrochagf', COLOR_WHITE)
+            pyxel.text(92, 76, f'by {AUTHOR_HANDLE}', COLOR_WHITE)
             pyxel.text(72, 92, f'Version {VERSION}', COLOR_WHITE)

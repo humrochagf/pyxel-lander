@@ -1,8 +1,8 @@
-from .constans import VERSION
+from .constans import AUTHOR, EMAIL, VERSION
 from .game import Game
 
-__author__ = 'Humberto Rocha'
-__email__ = 'humrochagf@gmail.com'
+__author__ = AUTHOR
+__email__ = EMAIL
 __version__ = VERSION
 
 __all__ = [
