@@ -53,7 +53,7 @@ setup(
     ],
     options={
         'app': {
-            'formal_name': 'pyxel-lander',
+            'formal_name': 'pyxel_lander',
         },
         'linux': {
             'dir': f'dist/{MAIN_MODULE}_linux',
