@@ -10,14 +10,17 @@ install.hack:
 # build linux for distribution
 build.linux:
 	python setup.py linux -s -b
+	zip -r dist/pyxel_lander_linux dist/pyxel_lander_linux
 
 # build mac os for distribution
 build.macos:
 	python setup.py macos -s -b
+	zip -r dist/pyxel_lander_macos dist/pyxel_lander_macos
 
 # build mac os for distribution
 build.windows:
 	python setup.py windows -s -b
+	zip -r dist/pyxel_lander_windows dist/pyxel_lander_windows
 
 # build pypi package for distribuition
 build:
@@ -30,8 +33,8 @@ publish:
 
 # lint code
 lint:
-	isort --recursive --apply lander pyxel_lander.py setup.py
-	flake8 lander pyxel_lander.py setup.py
+	isort --recursive --apply pyxel_lander setup.py
+	flake8 pyxel_lander setup.py
 
 # remove temporary files and artifacts
 clean:

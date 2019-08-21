@@ -58,5 +58,5 @@ $ pip install -r requirements.txt
 With everything installed run the game with:
 
 ```shell
-$ python -m lander
+$ python -m pyxel_lander
 ```

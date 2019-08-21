@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 
+import os
+
 from setuptools import find_packages, setup
 
+MAIN_MODULE = 'pyxel_lander'
 CONSTANTS = {}
 
-with open('lander/constans.py') as constans_file:
+with open(os.path.join(MAIN_MODULE, 'constants.py')) as constans_file:
     exec(constans_file.read(), CONSTANTS)
 
 with open('README.md') as f:
@@ -25,7 +28,7 @@ setup(
     license='MIT',
     packages=find_packages(),
     package_data={
-        'lander': ['assets/assets.pyxres'],
+        MAIN_MODULE: ['assets/assets.pyxres'],
     },
     zip_safe=False,
     install_requires=[
@@ -33,7 +36,7 @@ setup(
     ],
     python_requires='>=3.7',
     entry_points={
-        'gui_scripts': ['pyxel-lander=lander.__main__:main'],
+        'gui_scripts': [f'pyxel-lander={MAIN_MODULE}.__main__:main'],
     },
     platforms='any',
     keywords='pyxel games',
@@ -53,14 +56,14 @@ setup(
             'formal_name': 'pyxel-lander',
         },
         'linux': {
-            'dir': 'dist/linux',
+            'dir': f'dist/{MAIN_MODULE}_linux',
         },
         'macos': {
-            'dir': 'dist/macos',
+            'dir': f'dist/{MAIN_MODULE}_macos',
             'icon': 'images/icon',
         },
         'windows': {
-            'dir': 'dist/windows',
+            'dir': f'dist/{MAIN_MODULE}_windows',
             'icon': 'images/icon',
         },
     }

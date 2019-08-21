@@ -3,7 +3,7 @@ import time
 import pyxel
 from pyxel import COLOR_BLACK
 
-from .constans import (
+from .constants import (
     FUEL, MAX_IMPACT_LIMIT, PERFECT_LANDING_LIMIT, PLATFORM_COLOR,
     THRUSTERS_FORCE,
 )

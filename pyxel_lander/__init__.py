@@ -1,4 +1,4 @@
-from .constans import AUTHOR, EMAIL, VERSION
+from .constants import AUTHOR, EMAIL, VERSION
 
 __author__ = AUTHOR
 __email__ = EMAIL
