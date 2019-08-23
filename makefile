@@ -7,21 +7,6 @@ install.hack:
 	pip install -r requirements-dev.txt
 	pip install -e .
 
-# build linux for distribution
-build.linux:
-	python setup.py linux --clean -b -s
-	zip -r dist/pyxel_lander_linux dist/pyxel_lander_linux
-
-# build mac os for distribution
-build.macos:
-	python setup.py macos --clean -b -s
-	zip -r dist/pyxel_lander_macos dist/pyxel_lander_macos
-
-# build mac os for distribution
-build.windows:
-	python setup.py windows --clean -b -s
-	zip -r dist/pyxel_lander_windows dist/pyxel_lander_windows
-
 # build pypi package for distribuition
 build:
 	python setup.py sdist

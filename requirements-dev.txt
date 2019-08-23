@@ -1,5 +1,4 @@
 -r requirements.txt
-briefcase
 flake8
 isort
 twine
