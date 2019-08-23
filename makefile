@@ -1,3 +1,9 @@
+ifeq (, $(shell which pyxelpackager))
+	package_name =
+else
+	package_name = pyxel-lander-$(shell python -c 'from pyxel_lander import __version__; print(__version__)')
+endif
+
 # system-wide standard python installation
 install:
 	pip install .
@@ -11,6 +17,19 @@ install.hack:
 build:
 	python setup.py sdist
 	python setup.py bdist_wheel
+
+# make the executable package
+package:
+ifeq (, $(package_name))
+	$(error "Pyxel must be installed on this environment")
+else
+	pyxelpackager pyxel-lander.py
+	mkdir dist/$(package_name)
+	mv dist/pyxel-lander dist/$(package_name)
+	cp README.md dist/$(package_name)
+	cp LICENSE dist/$(package_name)/LICENSE.txt
+	zip -r dist/$(package_name).zip dist/$(package_name)
+endif
 
 # publish package to the pypi
 publish:
