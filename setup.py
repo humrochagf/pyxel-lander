@@ -36,7 +36,7 @@ setup(
     ],
     python_requires='>=3.7',
     entry_points={
-        'gui_scripts': [f'pyxel-lander={MAIN_MODULE}.__main__:main'],
+        'gui_scripts': [f'pyxel-lander={MAIN_MODULE}:Game'],
     },
     platforms='any',
     keywords='pyxel games',
@@ -51,20 +51,4 @@ setup(
         'Topic :: Games/Entertainment :: Arcade',
         'Topic :: Games/Entertainment :: Simulation',
     ],
-    options={
-        'app': {
-            'formal_name': 'pyxel_lander',
-        },
-        'linux': {
-            'dir': f'dist/{MAIN_MODULE}_linux',
-        },
-        'macos': {
-            'dir': f'dist/{MAIN_MODULE}_macos',
-            'icon': 'images/icon',
-        },
-        'windows': {
-            'dir': f'dist/{MAIN_MODULE}_windows',
-            'icon': 'images/icon',
-        },
-    }
 )
