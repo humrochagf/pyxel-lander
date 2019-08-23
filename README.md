@@ -24,8 +24,6 @@ Lunar Lander game tribute written in Python with [Pyxel](https://github.com/kita
 
 If you want to play the game without installing the development tools you can check it on [itch.io](https://humrochagf.itch.io/pyxel-lander).
 
-<iframe src="https://itch.io/embed/471797?dark=true" width="552" height="167" frameborder="0"></iframe>
-
 ## PyPI Installation
 
 This game runs with Python 3.7 or above.
