@@ -68,16 +68,16 @@ class Game:
         pyxel.text(140, 15, f'y: {velocity_y:.4f}', y_color)
 
         if status == 'landed':
-            pyxel.text(50, 80, f'Lunar Module Landed \\o/', COLOR_WHITE)
+            pyxel.text(50, 80, 'Lunar Module Landed \\o/', COLOR_WHITE)
         elif status == 'damaged':
             pyxel.text(
-                34, 80, f'Lunar Module Landed... Barely...', COLOR_YELLOW
+                34, 80, 'Lunar Module Landed... Barely...', COLOR_YELLOW
             )
         elif status == 'crashed':
-            pyxel.text(54, 80, f'Lunar Module Crashed!', COLOR_RED)
+            pyxel.text(54, 80, 'Lunar Module Crashed!', COLOR_RED)
         elif status == 'lost':
             pyxel.text(
-                22, 80, f'Contact with Lunar Module was Lost...', COLOR_WHITE
+                22, 80, 'Contact with Lunar Module was Lost...', COLOR_WHITE
             )
 
     def draw(self):
