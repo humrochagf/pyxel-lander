@@ -1,7 +1,7 @@
 from random import choice
 
 import pyxel
-from pyxel import COLOR_BLACK, COLOR_LIGHTGRAY
+from pyxel import COLOR_BLACK, COLOR_GRAY
 
 from .utils import Sprite, Tile
 
@@ -79,4 +79,4 @@ class Moon:
             )
 
             if tile.y < self.h - 16:
-                pyxel.rect(tile.x, tile.y + 16, 16, self.h, COLOR_LIGHTGRAY)
+                pyxel.rect(tile.x, tile.y + 16, 16, self.h, COLOR_GRAY)

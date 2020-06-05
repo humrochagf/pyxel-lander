@@ -32,7 +32,7 @@ setup(
     },
     zip_safe=False,
     install_requires=[
-        'pyxel==1.2.5',
+        'pyxel>=1.4.0',
     ],
     python_requires='>=3.7',
     entry_points={
@@ -46,6 +46,7 @@ setup(
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3 :: Only',
         'Topic :: Desktop Environment',
         'Topic :: Games/Entertainment :: Arcade',
