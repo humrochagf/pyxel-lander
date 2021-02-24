@@ -37,8 +37,8 @@ publish:
 
 # lint code
 lint:
-	isort --recursive --apply pyxel_lander setup.py
-	flake8 pyxel_lander setup.py
+	isort .
+	flake8 .
 
 # remove temporary files and artifacts
 clean:
