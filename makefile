@@ -43,7 +43,7 @@ else
 	cp README.md dist/$(PACKAGE_NAME)
 	cp LICENSE dist/$(PACKAGE_NAME)/LICENSE.txt
 	cp images/icon.png dist/$(PACKAGE_NAME)
-	zip -r dist/$(PACKAGE_NAME).zip dist/$(PACKAGE_NAME)
+	cd dist/$(PACKAGE_NAME) && zip ../$(PACKAGE_NAME).zip ./* && cd -
 endif
 
 # publish package to the pypi
