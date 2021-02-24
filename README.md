@@ -24,6 +24,31 @@ Lunar Lander game tribute written in Python with [Pyxel](https://github.com/kita
 
 If you want to play the game without installing the development tools you can check it on [itch.io](https://humrochagf.itch.io/pyxel-lander).
 
+### Adding it to application laucher (Linux Only)
+
+To be able to open the game without having to open a terminal and type `./pyxel-lander` you can add it as an application using the `.desktop` file.
+
+Create a file called `pyxel-lander.desktop` inside your user applications path:
+
+```shell
+$ touch ~/.local/share/applications/pyxel-lander.desktop
+```
+
+**Obs.:** This path was tested on Debian based distros, it can be different on other linux flavours.
+
+Add this content to the file changing just the paths to match the location were you downloaded the game:
+
+```
+[Desktop Entry]
+Name=Pyxel Lander
+Exec=/GAME_FOLDER_PATH/pyxel-lander
+Terminal=false
+Type=Application
+Icon=/GAME_FOLDER_PATH/icon.png
+```
+
+Now you have the game available on your application launcher (Gnome, KDE, Xfce, etc...)
+
 ## PyPI Installation
 
 This game runs with Python 3.7 or above.
