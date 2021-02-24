@@ -24,7 +24,7 @@ ifeq (, $(package_name))
 	$(error "Pyxel must be installed on this environment")
 else
 	pyxelpackager pyxel-lander.py
-	mkdir dist/$(package_name)
+	mkdir -p dist/$(package_name)
 	mv dist/pyxel-lander dist/$(package_name)
 	cp README.md dist/$(package_name)
 	cp LICENSE dist/$(package_name)/LICENSE.txt

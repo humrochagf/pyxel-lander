@@ -1,4 +1,5 @@
 -r requirements.txt
-flake8
-isort
-twine
+pyinstaller==4.2
+flake8==3.8.4
+isort==5.7.0
+twine==3.3.0
