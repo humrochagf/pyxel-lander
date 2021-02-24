@@ -18,7 +18,7 @@ Lunar Lander game tribute written in Python with [Pyxel](https://github.com/kita
 - The `s` key starts the game.
 - You can change maps with the `m` key on the menu.
 - The `r` key restarts the game.
-- You can exit the game with the `q` or `esc` keys. 
+- You can exit the game with the `q` or `esc` keys.
 
 ## Packaged executable
 
