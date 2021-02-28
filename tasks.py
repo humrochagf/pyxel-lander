@@ -1,13 +1,13 @@
 import itertools
+import platform
 import shutil
 import zipfile
 from pathlib import Path
 
 from invoke import task
 
-from pyxel_lander import __version__
-
 ROOTDIR = Path(__file__).parent.resolve()
+PLATFORM_NAME = platform.system().lower().replace("darwin", "osx")
 
 
 @task
@@ -48,7 +48,7 @@ def lint(c):
 def package(c):
     print("Packaging the game...")
 
-    package_name = f"pyxel-lander-{__version__}"
+    package_name = f"pyxel-lander-{PLATFORM_NAME}"
 
     dist_dir = ROOTDIR / Path("dist")
     package_dir = dist_dir / package_name

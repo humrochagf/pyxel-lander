@@ -41,7 +41,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: dist/*.zip
-          asset_name: pyxel-lander-${{ github.ref }}-linux.zip
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
@@ -81,7 +80,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: dist/*.zip
-          asset_name: pyxel-lander-${{ github.ref }}-osx.zip
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
@@ -117,7 +115,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: dist/*.zip
-          asset_name: pyxel-lander-${{ github.ref }}-windows.zip
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
