@@ -1,3 +1,4 @@
+import itertools
 import shutil
 import zipfile
 from pathlib import Path
@@ -6,17 +7,28 @@ from invoke import task
 
 from pyxel_lander import __version__
 
+ROOTDIR = Path(__file__).parent.resolve()
+
 
 @task
 def clean(c):
     print("Cleaning project...")
 
-    c.run("rm -rf *.egg-info dist build")
-    c.run("find . -name '*.pyc' -exec rm -f {} +")
-    c.run("find . -name '*.pyo' -exec rm -f {} +")
-    c.run("find . -name '*~' -exec rm -f {} +")
-    c.run("find . -name '.coverage' -exec rm -f {} +")
-    c.run("find . -name '__pycache__' -exec rmdir {} +")
+    cleaning_generator = itertools.chain(
+        ROOTDIR.rglob("*.py[co]"),
+        ROOTDIR.rglob("*~"),
+        ROOTDIR.rglob("*.egg-info"),
+        ROOTDIR.rglob(".coverage"),
+        ROOTDIR.rglob("__pycache__"),
+        ROOTDIR.rglob("dist"),
+        ROOTDIR.rglob("build"),
+    )
+
+    for path in cleaning_generator:
+        if path.is_dir:
+            shutil.rmtree(path)
+        else:
+            path.unlink()
 
     print("Cleaning done!")
 
@@ -38,33 +50,20 @@ def package(c):
 
     package_name = f"pyxel-lander-{__version__}"
 
-    root_folder = Path(__file__).parent.resolve()
-    dist_folder = root_folder / Path("dist")
-    package_folder = dist_folder / package_name
+    dist_dir = ROOTDIR / Path("dist")
+    package_dir = dist_dir / package_name
 
-    c.run(f"pyxelpackager {root_folder}/pyxel-lander.py")
+    c.run(f"pyxelpackager {ROOTDIR}/pyxel-lander.py")
 
-    package_folder.mkdir(parents=True, exist_ok=True)
+    package_dir.mkdir(parents=True, exist_ok=True)
 
-    shutil.move(
-        str(dist_folder / "pyxel-lander"),
-        str(package_folder),
-    )
-    shutil.copy(
-        str(root_folder / "README.md"),
-        str(package_folder),
-    )
-    shutil.copy(
-        str(root_folder / "LICENSE"),
-        str(package_folder / "LICENSE.txt"),
-    )
-    shutil.copy(
-        str(root_folder / "images" / "icon.png"),
-        str(package_folder),
-    )
+    shutil.move(str(dist_dir / "pyxel-lander"), str(package_dir))
+    shutil.copy(str(ROOTDIR / "README.md"), str(package_dir))
+    shutil.copy(str(ROOTDIR / "LICENSE"), str(package_dir / "LICENSE.txt"))
+    shutil.copy(str(ROOTDIR / "images" / "icon.png"), str(package_dir))
 
-    with zipfile.ZipFile(dist_folder / f"{package_name}.zip", "w") as fp:
-        for file in package_folder.iterdir():
+    with zipfile.ZipFile(dist_dir / f"{package_name}.zip", "w") as fp:
+        for file in package_dir.iterdir():
             fp.write(file, f"pyxel-lander/{file.name}")
 
     print("Packaging done!")
