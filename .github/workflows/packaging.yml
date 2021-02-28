@@ -25,4 +25,4 @@ jobs:
 
       - name: Run packaging
         run: |
-          invoke package
+          poetry run invoke package
