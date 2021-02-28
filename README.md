@@ -1,5 +1,10 @@
 # Pyxel Lander
 
+[![PyPI](https://img.shields.io/pypi/v/pyxel-lander.svg)](https://pypi.org/project/pyxel-lander/)
+[![PyPI - License](https://img.shields.io/pypi/l/pyxel-lander.svg)](https://pypi.org/project/pyxel-lander/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pyxel-lander.svg)](https://pypi.org/project/pyxel-lander/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+
 Lunar Lander game tribute written in Python with [Pyxel](https://github.com/kitao/pyxel) retro game engine.
 
 ![screenshot](https://raw.githubusercontent.com/humrochagf/pyxel-lander/master/images/screenshot.png)

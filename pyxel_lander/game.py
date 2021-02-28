@@ -18,12 +18,11 @@ from .moon import Moon
 
 
 class Game:
-
     def __init__(self):
         pyxel.init(WIDTH, HEIGHT)
 
         pyxel.load(
-            os.path.join(os.path.dirname(__file__), 'assets', 'assets.pyxres'),
+            os.path.join(os.path.dirname(__file__), "assets", "assets.pyxres"),
         )
 
         self.lunar_module = None
@@ -69,26 +68,26 @@ class Game:
         else:
             y_color = COLOR_WHITE
 
-        pyxel.text(70, 5, f'fuel: {fuel:.2f}', fuel_color)
-        pyxel.text(140, 5, f'x: {velocity_x:.4f}', x_color)
-        pyxel.text(140, 15, f'y: {velocity_y:.4f}', y_color)
+        pyxel.text(70, 5, f"fuel: {fuel:.2f}", fuel_color)
+        pyxel.text(140, 5, f"x: {velocity_x:.4f}", x_color)
+        pyxel.text(140, 15, f"y: {velocity_y:.4f}", y_color)
 
-        if status == 'landed':
-            pyxel.text(50, 80, 'Lunar Module Landed \\o/', COLOR_WHITE)
-        elif status == 'damaged':
+        if status == "landed":
+            pyxel.text(50, 80, "Lunar Module Landed \\o/", COLOR_WHITE)
+        elif status == "damaged":
             pyxel.text(
-                34, 80, 'Lunar Module Landed... Barely...', COLOR_YELLOW
+                34, 80, "Lunar Module Landed... Barely...", COLOR_YELLOW
             )
-        elif status == 'crashed':
-            pyxel.text(54, 80, 'Lunar Module Crashed!', COLOR_RED)
-        elif status == 'lost':
+        elif status == "crashed":
+            pyxel.text(54, 80, "Lunar Module Crashed!", COLOR_RED)
+        elif status == "lost":
             pyxel.text(
-                22, 80, 'Contact with Lunar Module was Lost...', COLOR_WHITE
+                22, 80, "Contact with Lunar Module was Lost...", COLOR_WHITE
             )
 
     def draw(self):
         pyxel.cls(COLOR_BLACK)
-        pyxel.text(5, 5, 'Pyxel Lander', COLOR_WHITE)
+        pyxel.text(5, 5, "Pyxel Lander", COLOR_WHITE)
 
         self.moon.draw()
 
@@ -105,7 +104,7 @@ class Game:
             pyxel.text(
                 18, 60, 'Press "s" to start or "m" to select map', COLOR_WHITE
             )
-            pyxel.text(44, 76, 'Made with', COLOR_WHITE)
-            pyxel.text(82, 76, '<3', COLOR_RED)
-            pyxel.text(92, 76, f'by {AUTHOR_HANDLE}', COLOR_WHITE)
-            pyxel.text(72, 92, f'Version {VERSION}', COLOR_WHITE)
+            pyxel.text(44, 76, "Made with", COLOR_WHITE)
+            pyxel.text(82, 76, "<3", COLOR_RED)
+            pyxel.text(92, 76, f"by {AUTHOR_HANDLE}", COLOR_WHITE)
+            pyxel.text(72, 92, f"Version {VERSION}", COLOR_WHITE)

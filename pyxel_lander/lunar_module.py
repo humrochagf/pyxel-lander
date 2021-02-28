@@ -16,32 +16,32 @@ from .utils import Sprite
 class LunarModule:
 
     sprites = {
-        'idle': [
+        "idle": [
             Sprite(0, 8, 0, 8, 8, COLOR_BLACK),
         ],
-        'lost':  [
+        "lost": [
             Sprite(0, 8, 0, 8, 8, COLOR_BLACK),
         ],
-        'landed': [
+        "landed": [
             Sprite(0, 8, 0, 8, 8, COLOR_BLACK),
         ],
-        'crashed': [
+        "crashed": [
             Sprite(0, 32, 0, 8, 8, COLOR_BLACK),
             Sprite(0, 32, 8, 8, 8, COLOR_BLACK),
         ],
-        'damaged': [
+        "damaged": [
             Sprite(0, 40, 0, 8, 8, COLOR_BLACK),
             Sprite(0, 40, 8, 8, 8, COLOR_BLACK),
         ],
-        'bottom-thruster': [
+        "bottom-thruster": [
             Sprite(0, 0, 8, 8, 8, COLOR_BLACK),
             Sprite(0, 8, 8, 8, 8, COLOR_BLACK),
         ],
-        'left-thruster': [
+        "left-thruster": [
             Sprite(0, 16, 0, 8, 8, COLOR_BLACK),
             Sprite(0, 24, 0, 8, 8, COLOR_BLACK),
         ],
-        'right-thruster': [
+        "right-thruster": [
             Sprite(0, 16, 8, 8, 8, COLOR_BLACK),
             Sprite(0, 24, 8, 8, 8, COLOR_BLACK),
         ],
@@ -52,7 +52,7 @@ class LunarModule:
     def __init__(self, x, y, gravity):
         self.x = x
         self.y = y
-        self.action = 'idle'
+        self.action = "idle"
         self.gravity = gravity
         self.velocity_x = 0
         self.velocity_y = 0
@@ -117,42 +117,42 @@ class LunarModule:
                 vy = self.velocity_y
 
                 if vx > MAX_IMPACT_LIMIT or vy > MAX_IMPACT_LIMIT:
-                    self.action = 'crashed'
+                    self.action = "crashed"
                 elif vx > PERFECT_LANDING_LIMIT or vy > PERFECT_LANDING_LIMIT:
-                    self.action = 'damaged'
+                    self.action = "damaged"
                 else:
-                    self.action = 'landed'
+                    self.action = "landed"
             elif collision_value == -1:
-                self.action = 'lost'
+                self.action = "lost"
             else:
-                self.action = 'crashed'
+                self.action = "crashed"
         else:
             thruster_x = 0
             thruster_y = 0
 
             if pyxel.btn(pyxel.KEY_DOWN) and self.fuel > 0:
-                self.action = 'bottom-thruster'
+                self.action = "bottom-thruster"
 
                 if self.fuel > THRUSTERS_FORCE:
                     thruster_y = THRUSTERS_FORCE
                 else:
                     thruster_y = self.fuel
             elif pyxel.btn(pyxel.KEY_LEFT) and self.fuel > 0:
-                self.action = 'left-thruster'
+                self.action = "left-thruster"
 
                 if self.fuel > THRUSTERS_FORCE:
                     thruster_x = THRUSTERS_FORCE
                 else:
                     thruster_x = self.fuel
             elif pyxel.btn(pyxel.KEY_RIGHT) and self.fuel > 0:
-                self.action = 'right-thruster'
+                self.action = "right-thruster"
 
                 if self.fuel > THRUSTERS_FORCE:
                     thruster_x = -THRUSTERS_FORCE
                 else:
                     thruster_x = -self.fuel
             else:
-                self.action = 'idle'
+                self.action = "idle"
 
             self.fuel -= abs(thruster_x) + abs(thruster_y)
 
@@ -168,12 +168,24 @@ class LunarModule:
         frame = self.get_frame()
 
         pyxel.blt(
-            self.x, self.y, frame.img, frame.u, frame.v, frame.w, frame.h,
+            self.x,
+            self.y,
+            frame.img,
+            frame.u,
+            frame.v,
+            frame.w,
+            frame.h,
             frame.colkey,
         )
 
-        if self.action == 'landed':
+        if self.action == "landed":
             pyxel.blt(
-                self.x + 8, self.y, self.flag.img, self.flag.u, self.flag.v,
-                self.flag.w, self.flag.h, self.flag.colkey,
+                self.x + 8,
+                self.y,
+                self.flag.img,
+                self.flag.u,
+                self.flag.v,
+                self.flag.w,
+                self.flag.h,
+                self.flag.colkey,
             )

@@ -9,19 +9,19 @@ from .utils import Sprite, Tile
 class Moon:
 
     sprites = {
-        'landing': [
+        "landing": [
             Sprite(0, 0, 16, 16, 16, COLOR_BLACK),
         ],
-        'flat': [
+        "flat": [
             Sprite(0, 16, 16, 16, 16, COLOR_BLACK),
             Sprite(0, 32, 16, 16, 16, COLOR_BLACK),
             Sprite(0, 48, 16, 16, 16, COLOR_BLACK),
         ],
-        'up': [
+        "up": [
             Sprite(0, 0, 32, 16, 16, COLOR_BLACK),
             Sprite(0, 16, 32, 16, 16, COLOR_BLACK),
         ],
-        'down': [
+        "down": [
             Sprite(0, 32, 32, 16, 16, COLOR_BLACK),
             Sprite(0, 48, 32, 16, 16, COLOR_BLACK),
         ],
@@ -43,15 +43,15 @@ class Moon:
 
         for x in surface_x_blocks:
             if x == landing_spot:
-                terrain = 'landing'
+                terrain = "landing"
             else:
-                terrain = choice(['flat', 'up', 'down'])
+                terrain = choice(["flat", "up", "down"])
 
-            if last_terrain in ['flat', 'landing'] and terrain == 'down':
+            if last_terrain in ["flat", "landing"] and terrain == "down":
                 y += 16
-            elif last_terrain == 'up' and terrain in ['flat', 'up', 'landing']:
+            elif last_terrain == "up" and terrain in ["flat", "up", "landing"]:
                 y -= 16
-            elif last_terrain == 'down' and terrain == 'down':
+            elif last_terrain == "down" and terrain == "down":
                 y += 16
 
             self.surface.append(
@@ -72,9 +72,13 @@ class Moon:
     def draw(self):
         for tile in self.surface:
             pyxel.blt(
-                tile.x, tile.y, tile.sprite.img,
-                tile.sprite.u, tile.sprite.v,
-                tile.sprite.w, tile.sprite.h,
+                tile.x,
+                tile.y,
+                tile.sprite.img,
+                tile.sprite.u,
+                tile.sprite.v,
+                tile.sprite.w,
+                tile.sprite.h,
                 tile.sprite.colkey,
             )
 

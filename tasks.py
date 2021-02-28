@@ -26,6 +26,7 @@ def lint(c):
     print("Running isort and flake8...")
 
     c.run("isort .")
+    c.run("black -l 79 .")
     c.run("flake8 .")
 
     print("Linting done!")

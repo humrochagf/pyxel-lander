@@ -1,9 +1,9 @@
 from pyxel import COLOR_LIME
 
-AUTHOR = 'Humberto Rocha'
-AUTHOR_HANDLE = '@humrochagf'
-EMAIL = 'humrochagf@gmail.com'
-VERSION = '1.3.1'
+AUTHOR = "Humberto Rocha"
+AUTHOR_HANDLE = "@humrochagf"
+EMAIL = "humrochagf@gmail.com"
+VERSION = "1.3.1"
 
 # Game screen
 
