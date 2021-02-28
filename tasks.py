@@ -57,7 +57,10 @@ def package(c):
 
     package_dir.mkdir(parents=True, exist_ok=True)
 
-    shutil.move(str(dist_dir / "pyxel-lander"), str(package_dir))
+    for path in dist_dir.iterdir():
+        if path != package_dir:
+            shutil.move(str(path), str(package_dir))
+
     shutil.copy(str(ROOTDIR / "README.md"), str(package_dir))
     shutil.copy(str(ROOTDIR / "LICENSE"), str(package_dir / "LICENSE.txt"))
     shutil.copy(str(ROOTDIR / "images" / "icon.png"), str(package_dir))
