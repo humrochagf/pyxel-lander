@@ -1,5 +1,10 @@
 name: packaging
-on: push
+
+on:
+  push:
+    tags:
+      - '*'
+
 jobs:
   linux:
     name: Create linux binary package
@@ -31,6 +36,16 @@ jobs:
         run: |
           poetry run invoke package
 
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: dist/*.zip
+          asset_name: pyxel-lander-${{ github.ref }}-linux.zip
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
+
   osx:
     name: Create OSX binary package
     runs-on: macos-latest
@@ -61,6 +76,16 @@ jobs:
         run: |
           poetry run invoke package
 
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: dist/*.zip
+          asset_name: pyxel-lander-${{ github.ref }}-osx.zip
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
+
   windows:
     name: Create Windows binary package
     runs-on: windows-latest
@@ -86,3 +111,13 @@ jobs:
       - name: Run packaging
         run: |
           poetry run invoke package
+
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: dist/*.zip
+          asset_name: pyxel-lander-${{ github.ref }}-windows.zip
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
