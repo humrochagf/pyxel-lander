@@ -4,8 +4,14 @@ import pyxel
 from pyxel import COLOR_BLACK, COLOR_RED, COLOR_WHITE, COLOR_YELLOW
 
 from .constants import (
-    AUTHOR_HANDLE, FUEL, GRAVITY, HEIGHT, MAX_IMPACT_LIMIT,
-    PERFECT_LANDING_LIMIT, VERSION, WIDTH,
+    AUTHOR_HANDLE,
+    FUEL,
+    GRAVITY,
+    HEIGHT,
+    MAX_IMPACT_LIMIT,
+    PERFECT_LANDING_LIMIT,
+    VERSION,
+    WIDTH,
 )
 from .lunar_module import LunarModule
 from .moon import Moon
