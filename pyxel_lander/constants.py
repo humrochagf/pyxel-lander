@@ -3,7 +3,7 @@ from pyxel import COLOR_LIME
 AUTHOR = "Humberto Rocha"
 AUTHOR_HANDLE = "@humrochagf"
 EMAIL = "humrochagf@gmail.com"
-VERSION = "1.3.1"
+VERSION = "1.3.2"
 
 # Game screen
 
