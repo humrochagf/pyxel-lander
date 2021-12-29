@@ -18,6 +18,7 @@ def clean(c):
         ROOTDIR.rglob("*.py[co]"),
         ROOTDIR.rglob("*~"),
         ROOTDIR.rglob("*.egg-info"),
+        ROOTDIR.rglob("*.pyxapp"),
         ROOTDIR.rglob(".coverage"),
         ROOTDIR.rglob("__pycache__"),
         ROOTDIR.rglob("dist"),
@@ -25,7 +26,7 @@ def clean(c):
     )
 
     for path in cleaning_generator:
-        if path.is_dir:
+        if path.is_dir():
             shutil.rmtree(path)
         else:
             path.unlink()
@@ -50,17 +51,15 @@ def package(c):
 
     package_name = f"pyxel-lander-{PLATFORM_NAME}"
 
-    dist_dir = ROOTDIR / Path("dist")
+    code_dir = ROOTDIR / "pyxel_lander"
+    dist_dir = ROOTDIR / "dist"
     package_dir = dist_dir / package_name
 
-    c.run(f"pyxelpackager {ROOTDIR}/pyxel-lander.py")
+    c.run(f"pyxel package {code_dir} __main__.py")
 
     package_dir.mkdir(parents=True, exist_ok=True)
 
-    for path in dist_dir.iterdir():
-        if path != package_dir:
-            shutil.move(str(path), str(package_dir))
-
+    shutil.move(str(ROOTDIR / "pyxel_lander.pyxapp"), str(package_dir))
     shutil.copy(str(ROOTDIR / "README.md"), str(package_dir))
     shutil.copy(str(ROOTDIR / "LICENSE"), str(package_dir / "LICENSE.txt"))
     shutil.copy(str(ROOTDIR / "images" / "icon.png"), str(package_dir))

@@ -3,14 +3,14 @@ import time
 import pyxel
 from pyxel import COLOR_BLACK
 
-from .constants import (
+from pyxel_lander.constants import (
     FUEL,
     MAX_IMPACT_LIMIT,
     PERFECT_LANDING_LIMIT,
     PLATFORM_COLOR,
     THRUSTERS_FORCE,
 )
-from .utils import Sprite
+from pyxel_lander.utils import Sprite
 
 
 class LunarModule:
@@ -88,7 +88,7 @@ class LunarModule:
 
                 # check for overlapping with the module left leg
                 if left_x >= 0 and left_x < 16:
-                    collision_value = pyxel.image(surface.sprite.img).get(
+                    collision_value = pyxel.image(surface.sprite.img).pget(
                         surface.sprite.u + left_x,
                         surface.sprite.v + y,
                     )
@@ -98,7 +98,7 @@ class LunarModule:
 
                 # check for overlapping with the module right leg
                 if right_x >= 0 and right_x < 16:
-                    collision_value = pyxel.image(surface.sprite.img).get(
+                    collision_value = pyxel.image(surface.sprite.img).pget(
                         surface.sprite.u + right_x,
                         surface.sprite.v + y,
                     )
