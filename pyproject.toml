@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyxel-lander"
-version = "1.3.2"
+version = "1.4.0"
 description = "Lunar Lander game tribute written in Python with Pyxel retro game engine"
 authors = ["Humberto Rocha <humrochagf@gmail.com>"]
 license = "MIT"
