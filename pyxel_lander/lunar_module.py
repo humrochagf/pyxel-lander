@@ -14,7 +14,6 @@ from pyxel_lander.utils import Sprite
 
 
 class LunarModule:
-
     sprites = {
         "idle": [
             Sprite(0, 8, 0, 8, 8, COLOR_BLACK),

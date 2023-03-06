@@ -40,7 +40,7 @@ def lint(c):
 
     c.run("isort .")
     c.run("black -l 79 .")
-    c.run("flake8 .")
+    c.run("flake8 --exclude .hatch,.mypy_cache .")
 
     print("Linting done!")
 

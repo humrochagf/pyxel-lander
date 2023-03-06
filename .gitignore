@@ -1,5 +1,7 @@
 .idea/
 .cache/
+.hatch/
+.mypy_cache/
 
 dist/
 build/

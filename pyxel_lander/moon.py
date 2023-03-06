@@ -7,7 +7,6 @@ from pyxel_lander.utils import Sprite, Tile
 
 
 class Moon:
-
     sprites = {
         "landing": [
             Sprite(0, 0, 16, 16, 16, COLOR_BLACK),
