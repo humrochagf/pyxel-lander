@@ -12,5 +12,6 @@ build/
 *.egg-info
 *.pyc
 *.pyo
+*.pyxapp
 *.tar.gz
 *.zip

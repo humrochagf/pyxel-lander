@@ -3,7 +3,7 @@ import os
 import pyxel
 from pyxel import COLOR_BLACK, COLOR_RED, COLOR_WHITE, COLOR_YELLOW
 
-from .constants import (
+from pyxel_lander.constants import (
     AUTHOR_HANDLE,
     FUEL,
     GRAVITY,
@@ -13,8 +13,8 @@ from .constants import (
     VERSION,
     WIDTH,
 )
-from .lunar_module import LunarModule
-from .moon import Moon
+from pyxel_lander.lunar_module import LunarModule
+from pyxel_lander.moon import Moon
 
 
 class Game:

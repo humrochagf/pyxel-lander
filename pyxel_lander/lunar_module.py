@@ -3,14 +3,14 @@ import time
 import pyxel
 from pyxel import COLOR_BLACK
 
-from .constants import (
+from pyxel_lander.constants import (
     FUEL,
     MAX_IMPACT_LIMIT,
     PERFECT_LANDING_LIMIT,
     PLATFORM_COLOR,
     THRUSTERS_FORCE,
 )
-from .utils import Sprite
+from pyxel_lander.utils import Sprite
 
 
 class LunarModule:
