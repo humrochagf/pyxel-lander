@@ -1,3 +1,3 @@
-from pyxel_lander import Game
+from . import Game
 
 Game()

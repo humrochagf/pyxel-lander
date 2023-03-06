@@ -3,7 +3,7 @@ from random import choice
 import pyxel
 from pyxel import COLOR_BLACK, COLOR_GRAY
 
-from pyxel_lander.utils import Sprite, Tile
+from .utils import Sprite, Tile
 
 
 class Moon:

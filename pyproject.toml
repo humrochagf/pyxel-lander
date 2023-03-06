@@ -31,6 +31,7 @@ classifiers = [
 ]
 dependencies = [
   "pyxel>=1.9",
+  "pyinstaller==5.8.0",
 ]
 dynamic = ["version"]
 

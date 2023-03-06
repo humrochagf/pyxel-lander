@@ -39,8 +39,8 @@ def lint(c):
     print("Running isort and flake8...")
 
     c.run("isort .")
-    c.run("black -l 79 .")
-    c.run("flake8 --exclude .hatch,.mypy_cache .")
+    c.run("black .")
+    c.run("flake8 --max-line-length 88 --exclude .hatch,.mypy_cache .")
 
     print("Linting done!")
 
@@ -52,10 +52,12 @@ def package(c):
     package_name = f"pyxel-lander-{PLATFORM_NAME}"
 
     code_dir = ROOTDIR / "pyxel_lander"
+    startup_file = code_dir / "__main__.py"
+
     dist_dir = ROOTDIR / "dist"
     package_dir = dist_dir / package_name
 
-    c.run(f"pyxel package {code_dir} __main__.py")
+    c.run(f"pyxel package {code_dir} {startup_file}")
 
     package_dir.mkdir(parents=True, exist_ok=True)
 

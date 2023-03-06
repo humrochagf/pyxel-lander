@@ -3,7 +3,7 @@ import os
 import pyxel
 from pyxel import COLOR_BLACK, COLOR_RED, COLOR_WHITE, COLOR_YELLOW
 
-from pyxel_lander.constants import (
+from .constants import (
     AUTHOR_HANDLE,
     FUEL,
     GRAVITY,
@@ -13,8 +13,8 @@ from pyxel_lander.constants import (
     VERSION,
     WIDTH,
 )
-from pyxel_lander.lunar_module import LunarModule
-from pyxel_lander.moon import Moon
+from .lunar_module import LunarModule
+from .moon import Moon
 
 
 class Game:
@@ -75,15 +75,11 @@ class Game:
         if status == "landed":
             pyxel.text(50, 80, "Lunar Module Landed \\o/", COLOR_WHITE)
         elif status == "damaged":
-            pyxel.text(
-                34, 80, "Lunar Module Landed... Barely...", COLOR_YELLOW
-            )
+            pyxel.text(34, 80, "Lunar Module Landed... Barely...", COLOR_YELLOW)
         elif status == "crashed":
             pyxel.text(54, 80, "Lunar Module Crashed!", COLOR_RED)
         elif status == "lost":
-            pyxel.text(
-                22, 80, "Contact with Lunar Module was Lost...", COLOR_WHITE
-            )
+            pyxel.text(22, 80, "Contact with Lunar Module was Lost...", COLOR_WHITE)
 
     def draw(self):
         pyxel.cls(COLOR_BLACK)
@@ -101,9 +97,7 @@ class Game:
 
             self.lunar_module.draw()
         else:
-            pyxel.text(
-                18, 60, 'Press "s" to start or "m" to select map', COLOR_WHITE
-            )
+            pyxel.text(18, 60, 'Press "s" to start or "m" to select map', COLOR_WHITE)
             pyxel.text(44, 76, "Made with", COLOR_WHITE)
             pyxel.text(82, 76, "<3", COLOR_RED)
             pyxel.text(92, 76, f"by {AUTHOR_HANDLE}", COLOR_WHITE)

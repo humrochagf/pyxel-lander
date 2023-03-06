@@ -1,5 +1,5 @@
-from pyxel_lander.constants import AUTHOR, EMAIL, VERSION
-from pyxel_lander.game import Game
+from .constants import AUTHOR, EMAIL, VERSION
+from .game import Game
 
 __author__ = AUTHOR
 __email__ = EMAIL
